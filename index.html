@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sneha Raj — Corporate Communicator & Media Specialist</title>
+  <meta name="description" content="Portfolio of Sneha Raj — Corporate Communicator, Brand Strategist & Social Media Manager. Experience across Eklavya Foundation, OMC, Tata Steel, and Forest Department.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Google Fonts: Syne (WTF brutalist headline) + Space Grotesk + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            space: ['Space Grotesk', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              black: '#0A0A0C',
+              dark: '#121316',
+              card: '#181A1F',
+              border: '#272A30',
+              neon: '#CEFF00',
+              coral: '#FF4A4A',
+              orange: '#FF7A00',
+              cyan: '#00F0FF',
+              purple: '#A855F7',
+              cream: '#F4EFE6',
+            }
+          },
+          animation: {
+            'marquee': 'marquee 25s linear infinite',
+            'marquee-reverse': 'marquee-reverse 25s linear infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'bounce-subtle': 'bounce 2s infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            'marquee-reverse': {
+              '0%': { transform: 'translateX(-50%)' },
+              '100%': { transform: 'translateX(0%)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A0A0C;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #272A30;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #CEFF00;
+    }
+
+    /* Dot Grid Background (WTF Style) */
+    .bg-dot-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.2px, transparent 1.2px);
+      background-size: 28px 28px;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      pointer-events: none;
+      position: fixed;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #CEFF00;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s;
+      z-index: 9999;
+      display: none;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .custom-cursor { display: block; }
+    }
+    .custom-cursor.active {
+      width: 48px;
+      height: 48px;
+      background-color: rgba(206, 255, 0, 0.2);
+    }
+
+    /* Sticker Badges */
+    .sticker-badge {
+      box-shadow: 4px 4px 0px 0px #000;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .sticker-badge:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px 0px #000;
+    }
+
+    /* Brutalist Card Shadow */
+    .brutalist-card {
+      box-shadow: 6px 6px 0px 0px #000;
+      border: 2px solid #272A30;
+      transition: all 0.2s ease;
+    }
+    .brutalist-card:hover {
+      border-color: #CEFF00;
+      box-shadow: 8px 8px 0px 0px #CEFF00;
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body class="bg-brand-black text-brand-cream font-inter selection:bg-brand-neon selection:text-black overflow-x-hidden">
+
+  <!-- Custom Cursor -->
+  <div id="cursor" class="custom-cursor"></div>
+
+  <!-- STICKY TOP PILL NAVBAR -->
+  <header class="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+    <nav class="bg-brand-dark/90 backdrop-blur-md border-2 border-brand-border rounded-full px-5 py-2.5 flex items-center gap-6 shadow-2xl">
+      <a href="#hero" class="font-syne text-lg font-bold tracking-tight text-white hover:text-brand-neon transition-colors flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-brand-neon animate-ping"></span>
+        SNEHA RAJ
+      </a>
+      <div class="hidden md:flex items-center gap-5 text-sm font-space text-zinc-300">
+        <a href="#eklavya" class="hover:text-brand-neon transition-colors">Eklavya Growth</a>
+        <a href="#omc" class="hover:text-brand-neon transition-colors">OMC Work</a>
+        <a href="#campaigns" class="hover:text-brand-neon transition-colors">Campaigns</a>
+        <a href="#creative" class="hover:text-brand-neon transition-colors">Creative Vault</a>
+        <a href="#contact" class="hover:text-brand-neon transition-colors">Contact</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="resume.tex" download="Sneha_Raj_Resume.tex" class="sticker-badge bg-brand-neon text-black font-space font-bold text-xs uppercase px-3.5 py-1.5 rounded-full border border-black flex items-center gap-1.5 hover:bg-white transition-all">
+          <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+          Resume
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative min-h-screen pt-28 pb-16 flex flex-col justify-center items-center px-4 bg-dot-grid overflow-hidden">
+    
+    <!-- Floating WTF Style Sticker Badges -->
+    <div class="absolute top-28 left-6 md:left-20 rotate-[-8deg] hidden sm:block">
+      <div class="sticker-badge bg-brand-coral text-white font-space font-bold text-xs uppercase px-3 py-1.5 rounded-md border-2 border-black">
+        ⚡ 0% Ad Spend · 100% Organic
+      </div>
+    </div>
+    <div class="absolute top-36 right-6 md:right-24 rotate-[6deg] hidden sm:block">
+      <div class="sticker-badge bg-brand-neon text-black font-space font-bold text-xs uppercase px-3 py-1.5 rounded-md border-2 border-black">
+        🎯 Corporate Communicator
+      </div>
+    </div>
+    <div class="absolute bottom-28 left-8 md:left-28 rotate-[4deg] hidden lg:block">
+      <div class="sticker-badge bg-brand-cyan text-black font-space font-bold text-xs uppercase px-3 py-1.5 rounded-md border-2 border-black">
+        🎓 IIMC Dhenkanal (CCBM)
+      </div>
+    </div>
+    <div class="absolute bottom-32 right-10 md:right-32 rotate-[-5deg] hidden lg:block">
+      <div class="sticker-badge bg-brand-orange text-black font-space font-bold text-xs uppercase px-3 py-1.5 rounded-md border-2 border-black">
+        ✨ Viral Storyteller
+      </div>
+    </div>
+
+    <!-- Main Hero Content -->
+    <div class="max-w-5xl mx-auto text-center z-10">
+      
+      <!-- Sub-tagline -->
+      <div class="inline-flex items-center gap-2 bg-brand-card/80 border border-brand-border rounded-full px-4 py-1.5 mb-6 text-xs font-space text-zinc-300">
+        <span class="w-2 h-2 rounded-full bg-brand-neon"></span>
+        Currently: Social Media Manager @ <strong class="text-white">Eklavya India Foundation</strong>
+      </div>
+
+      <!-- Main Headline in Syne (WTF Vibe) -->
+      <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-syne font-extrabold uppercase tracking-tight text-white leading-[0.95] mb-6">
+        TURNING <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-brand-cyan to-brand-coral">IDEAS</span> INTO <br>
+        <span class="underline decoration-brand-neon decoration-wavy decoration-2">ORGANIC</span> IMPACT.
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-lg md:text-xl text-zinc-300 font-inter font-normal leading-relaxed mb-8">
+        Corporate Communicator & Social Media Architect with hands-on experience driving multi-channel growth, PR campaigns, and on-ground media coverage across non-profit, government, and corporate CSR ecosystems.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap justify-center items-center gap-4">
+        <a href="#eklavya" class="sticker-badge bg-brand-neon text-black font-space font-bold text-base px-6 py-3 rounded-full border-2 border-black flex items-center gap-2 hover:bg-white transition-all">
+          <i data-lucide="trending-up" class="w-5 h-5"></i>
+          Explore Growth & Metrics
+        </a>
+        <a href="#omc" class="sticker-badge bg-brand-card text-white font-space font-bold text-base px-6 py-3 rounded-full border-2 border-brand-border flex items-center gap-2 hover:border-brand-neon transition-all">
+          <i data-lucide="instagram" class="w-5 h-5 text-brand-coral"></i>
+          View OMC Work & Newsletter
+        </a>
+        <button onclick="togglePookie()" class="sticker-badge bg-brand-coral text-white font-space font-bold text-base px-6 py-3 rounded-full border-2 border-black flex items-center gap-2 hover:bg-brand-orange transition-all">
+          <span>🧸</span> Chat with Pookie Bot
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- INFINITE MARQUEE TICKER (WTF Style) -->
+  <div class="bg-brand-neon text-black py-3 border-y-2 border-black overflow-hidden font-space font-bold text-sm tracking-wider uppercase select-none">
+    <div class="flex whitespace-nowrap animate-marquee">
+      <span class="mx-4">✦ CORPORATE COMMUNICATION</span>
+      <span class="mx-4">✦ BRAND STRATEGY</span>
+      <span class="mx-4">✦ SOCIAL MEDIA MANAGEMENT</span>
+      <span class="mx-4">✦ 35.6% LINKEDIN FOLLOWER GROWTH</span>
+      <span class="mx-4">✦ GOVT & CSR PR CAMPAIGNS</span>
+      <span class="mx-4">✦ VERNACULAR STORYTELLING</span>
+      <span class="mx-4">✦ ON-GROUND EVENT MEDIA</span>
+      <span class="mx-4">✦ NEWSLETTER & EDITORIAL</span>
+      <span class="mx-4">✦ CORPORATE COMMUNICATION</span>
+      <span class="mx-4">✦ BRAND STRATEGY</span>
+      <span class="mx-4">✦ SOCIAL MEDIA MANAGEMENT</span>
+      <span class="mx-4">✦ 35.6% LINKEDIN FOLLOWER GROWTH</span>
+      <span class="mx-4">✦ GOVT & CSR PR CAMPAIGNS</span>
+    </div>
+  </div>
+
+  <!-- SECTION: EKLAVYA INDIA FOUNDATION (ORGANIC GROWTH DASHBOARD) -->
+  <section id="eklavya" class="py-20 px-4 max-w-6xl mx-auto">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <div class="inline-block sticker-badge bg-brand-coral text-white text-xs font-space font-bold px-3 py-1 rounded border-2 border-black uppercase mb-3">
+          Current Role · Full-Time (Jul 2026 – Present)
+        </div>
+        <h2 class="text-4xl md:text-6xl font-syne font-bold text-white tracking-tight uppercase">
+          Eklavya India Foundation
+        </h2>
+        <p class="text-zinc-400 font-space text-base mt-2">
+          Social Media Growth & Channel Performance Analytics across Platforms
+        </p>
+      </div>
+      <div class="text-right">
+        <span class="text-xs font-space text-zinc-500 block">Verified Channel Audit</span>
+        <span class="text-brand-neon font-space font-bold text-sm">₹0 Paid Ads · 100% Organic Strategy</span>
+      </div>
+    </div>
+
+    <!-- 3-Platform Interactive Tabs -->
+    <div class="bg-brand-dark border-2 border-brand-border rounded-2xl p-6 md:p-8 brutalist-card">
+      
+      <!-- Tab Buttons -->
+      <div class="flex flex-wrap gap-3 mb-8 border-b border-brand-border/60 pb-5">
+        <button onclick="switchPlatform('linkedin')" id="tab-btn-linkedin" class="platform-tab-btn sticker-badge bg-brand-neon text-black font-space font-bold text-sm px-5 py-2.5 rounded-full border-2 border-black flex items-center gap-2">
+          <i data-lucide="linkedin" class="w-4 h-4"></i>
+          LinkedIn Analytics
+          <span class="bg-black text-white text-xs px-2 py-0.5 rounded-full">+35.6%</span>
+        </button>
+        <button onclick="switchPlatform('instagram')" id="tab-btn-instagram" class="platform-tab-btn sticker-badge bg-brand-card text-zinc-300 font-space font-bold text-sm px-5 py-2.5 rounded-full border border-brand-border flex items-center gap-2 hover:border-brand-neon">
+          <i data-lucide="instagram" class="w-4 h-4 text-pink-500"></i>
+          Instagram Performance
+          <span class="bg-pink-500/20 text-pink-400 text-xs px-2 py-0.5 rounded-full">+37%</span>
+        </button>
+        <button onclick="switchPlatform('facebook')" id="tab-btn-facebook" class="platform-tab-btn sticker-badge bg-brand-card text-zinc-300 font-space font-bold text-sm px-5 py-2.5 rounded-full border border-brand-border flex items-center gap-2 hover:border-brand-neon">
+          <i data-lucide="facebook" class="w-4 h-4 text-blue-500"></i>
+          Facebook Growth
+          <span class="bg-blue-500/20 text-blue-400 text-xs px-2 py-0.5 rounded-full">+35.6%</span>
+        </button>
+      </div>
+
+      <!-- TAB 1: LINKEDIN CONTENT -->
+      <div id="platform-linkedin" class="platform-tab-content">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+          
+          <div class="bg-brand-card p-4 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Follower Growth</span>
+            <span class="text-2xl lg:text-3xl font-syne font-bold text-brand-neon block">+35.6%</span>
+            <span class="text-[11px] text-zinc-500 mt-1 block">527 new follows · 30d</span>
+          </div>
+
+          <div class="bg-brand-card p-4 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Unique Visitors</span>
+            <span class="text-2xl lg:text-3xl font-syne font-bold text-white block">+11.4%</span>
+            <span class="text-[11px] text-zinc-500 mt-1 block">599 visitors · 30d</span>
+          </div>
+
+          <div class="bg-brand-card p-4 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Page Views</span>
+            <span class="text-2xl lg:text-3xl font-syne font-bold text-white block">+2.1%</span>
+            <span class="text-[11px] text-zinc-500 mt-1 block">1,246 views · 30d</span>
+          </div>
+
+          <div class="bg-brand-card p-4 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Search Appearances</span>
+            <span class="text-2xl lg:text-3xl font-syne font-bold text-brand-cyan block">5,904</span>
+            <span class="text-[11px] text-zinc-500 mt-1 block">Last 7 days</span>
+          </div>
+
+          <div class="bg-brand-card p-4 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Total Followers</span>
+            <span class="text-2xl lg:text-3xl font-syne font-bold text-white block">32,969</span>
+            <span class="text-[11px] text-zinc-500 mt-1 block">Cumulative base</span>
+          </div>
+
+          <div class="bg-brand-card p-4 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Organic New</span>
+            <span class="text-2xl lg:text-3xl font-syne font-bold text-brand-orange block">527</span>
+            <span class="text-[11px] text-zinc-500 mt-1 block">Zero ad spend</span>
+          </div>
+
+        </div>
+
+        <div class="p-5 bg-brand-black/70 rounded-xl border border-brand-border">
+          <h4 class="font-space font-bold text-sm text-brand-neon uppercase tracking-wider mb-2 flex items-center gap-2">
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+            Portfolio Summary & Impact
+          </h4>
+          <p class="text-zinc-300 font-inter text-sm leading-relaxed">
+            "Managed LinkedIn content and page performance for Eklavya India Foundation, achieving <strong>35.6% follower growth</strong>, <strong>11.4% growth in unique visitors</strong>, and <strong>2.1% growth in page views</strong>, while tracking search visibility (<strong>5,904 search appearances</strong> in 7 days) and organic audience acquisition. <em>(Reporting periods vary by metric: follower and visitor metrics are shown for 30 days, while search appearances are for 7 days.)</em>"
+          </p>
+        </div>
+      </div>
+
+      <!-- TAB 2: INSTAGRAM CONTENT -->
+      <div id="platform-instagram" class="platform-tab-content hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          
+          <div class="bg-brand-card p-5 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Views Growth</span>
+            <span class="text-3xl font-syne font-bold text-pink-400 block">+37%</span>
+            <span class="text-xs text-zinc-500 mt-1 block">7-Day Period</span>
+          </div>
+
+          <div class="bg-brand-card p-5 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Engagement Growth</span>
+            <span class="text-3xl font-syne font-bold text-brand-neon block">+38%</span>
+            <span class="text-xs text-zinc-500 mt-1 block">7-Day Period</span>
+          </div>
+
+          <div class="bg-brand-card p-5 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Total Views</span>
+            <span class="text-3xl font-syne font-bold text-white block">10,468</span>
+            <span class="text-xs text-zinc-500 mt-1 block">Organic Video & Story Views</span>
+          </div>
+
+          <div class="bg-brand-card p-5 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Total Engagements</span>
+            <span class="text-3xl font-syne font-bold text-brand-orange block">429</span>
+            <span class="text-xs text-zinc-500 mt-1 block">Likes, Comments & Shares</span>
+          </div>
+
+        </div>
+
+        <div class="p-5 bg-brand-black/70 rounded-xl border border-brand-border">
+          <h4 class="font-space font-bold text-sm text-pink-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+            <i data-lucide="video" class="w-4 h-4"></i>
+            Key Content Engine: Vernacular Student Stories
+          </h4>
+          <p class="text-zinc-300 font-inter text-sm leading-relaxed">
+            Spearheaded short-form video reels, editing Marathi and Hindi first-generation student testimonials (e.g. <em>"आर्थिक परिस्थिती जिद्दीपेक्षा मोठी असू शकत नाही"</em>) alongside PG Bootcamp residential recaps in Nagpur, driving organic discovery and strong community interaction.
+          </p>
+        </div>
+      </div>
+
+      <!-- TAB 3: FACEBOOK CONTENT -->
+      <div id="platform-facebook" class="platform-tab-content hidden">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          
+          <div class="bg-brand-card p-5 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">New Follower Growth</span>
+            <span class="text-3xl font-syne font-bold text-blue-400 block">+35.6%</span>
+            <span class="text-xs text-zinc-500 mt-1 block">527 Net New Followers</span>
+          </div>
+
+          <div class="bg-brand-card p-5 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Unique Visitors</span>
+            <span class="text-3xl font-syne font-bold text-white block">+11.4%</span>
+            <span class="text-xs text-zinc-500 mt-1 block">Alumni & Supporter Reach</span>
+          </div>
+
+          <div class="bg-brand-card p-5 rounded-xl border border-brand-border">
+            <span class="text-xs font-space text-zinc-400 block mb-1">Page Views</span>
+            <span class="text-3xl font-syne font-bold text-brand-neon block">+2.1%</span>
+            <span class="text-xs text-zinc-500 mt-1 block">Community Page Engagements</span>
+          </div>
+
+        </div>
+
+        <div class="p-5 bg-brand-black/70 rounded-xl border border-brand-border">
+          <h4 class="font-space font-bold text-sm text-blue-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            Target Audience Re-Alignment
+          </h4>
+          <p class="text-zinc-300 font-inter text-sm leading-relaxed">
+            Shifted Facebook channel positioning from direct student enrollment to a dedicated alumni and supporter engagement platform, sustaining steady follower growth and community outreach.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SECTION: OMC (ODISHA MINING CORPORATION) WORK & EMBEDDED POSTS -->
+  <section id="omc" class="py-20 px-4 bg-brand-dark/50 border-t border-brand-border">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <div class="inline-block sticker-badge bg-brand-neon text-black text-xs font-space font-bold px-3 py-1 rounded border-2 border-black uppercase mb-3">
+            Corporate & CSR Media Internship
+          </div>
+          <h2 class="text-4xl md:text-6xl font-syne font-bold text-white tracking-tight uppercase">
+            Odisha Mining Corporation
+          </h2>
+          <p class="text-zinc-400 font-space text-base mt-2">
+            Field CSR Storytelling, Foundation Day Media Coordination & Official Newsletter Editorial
+          </p>
+        </div>
+        <div>
+          <a href="https://dg1ya6cdc7ief.cloudfront.net/Upload/Publication_Documents/25b3cd5675cf46ff9349baf35632d78f_20260609121100934.pdf" target="_blank" rel="noopener noreferrer" class="sticker-badge bg-brand-coral text-white font-space font-bold text-xs uppercase px-4 py-2 rounded-full border-2 border-black inline-flex items-center gap-2 hover:bg-white hover:text-black transition-all">
+            <i data-lucide="file-down" class="w-4 h-4"></i>
+            Download Drafted Newsletter (PDF)
+          </a>
+        </div>
+      </div>
+
+      <!-- 3 INSTAGRAM POSTS GRID + NEWSLETTER DRAFT CARD -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        
+        <!-- Post 1 Card -->
+        <div class="bg-brand-card border-2 border-brand-border rounded-xl p-5 brutalist-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-space text-pink-400 font-bold flex items-center gap-1.5">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+                Official Post #1
+              </span>
+              <span class="text-[11px] text-zinc-500 font-space">OMC Digital</span>
+            </div>
+            <div class="h-44 bg-zinc-900 rounded-lg border border-brand-border flex flex-col items-center justify-center p-4 text-center mb-4 relative overflow-hidden group">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-zinc-900/60 to-transparent z-10"></div>
+              <i data-lucide="image" class="w-12 h-12 text-zinc-600 mb-2 relative z-20 group-hover:text-brand-neon transition-colors"></i>
+              <p class="text-xs font-space text-zinc-300 relative z-20">CSR & Ground Initiatives Coverage</p>
+              <span class="text-[10px] text-zinc-500 relative z-20 mt-1">@omc_odisha on Instagram</span>
+            </div>
+            <p class="text-zinc-300 text-sm font-inter line-clamp-3 mb-4">
+              On-ground documentary social post highlighting community welfare and field activities across OMC project locations.
+            </p>
+          </div>
+          <a href="https://www.instagram.com/p/DaSyxW2z73R/?stkn=OTcxeWF6eHJ2ZDVp" target="_blank" rel="noopener noreferrer" class="sticker-badge bg-brand-neon text-black text-xs font-space font-bold py-2 px-4 rounded-lg border-2 border-black flex items-center justify-center gap-2 hover:bg-white transition-all text-center">
+            View Live Post on Instagram
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Post 2 Card -->
+        <div class="bg-brand-card border-2 border-brand-border rounded-xl p-5 brutalist-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-space text-pink-400 font-bold flex items-center gap-1.5">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+                Official Post #2
+              </span>
+              <span class="text-[11px] text-zinc-500 font-space">Foundation Day</span>
+            </div>
+            <div class="h-44 bg-zinc-900 rounded-lg border border-brand-border flex flex-col items-center justify-center p-4 text-center mb-4 relative overflow-hidden group">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-zinc-900/60 to-transparent z-10"></div>
+              <i data-lucide="award" class="w-12 h-12 text-zinc-600 mb-2 relative z-20 group-hover:text-brand-cyan transition-colors"></i>
+              <p class="text-xs font-space text-zinc-300 relative z-20">Foundation Day Media Coverage</p>
+              <span class="text-[10px] text-zinc-500 relative z-20 mt-1">Institutional Press & Video</span>
+            </div>
+            <p class="text-zinc-300 text-sm font-inter line-clamp-3 mb-4">
+              Press and social media coordination for the official Foundation Day celebrations, translating executive milestones into digital copy.
+            </p>
+          </div>
+          <a href="https://www.instagram.com/p/DaHNLViTKRx/?stkn=MjJscG5jcXN4ejlx" target="_blank" rel="noopener noreferrer" class="sticker-badge bg-brand-neon text-black text-xs font-space font-bold py-2 px-4 rounded-lg border-2 border-black flex items-center justify-center gap-2 hover:bg-white transition-all text-center">
+            View Live Post on Instagram
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Post 3 Card -->
+        <div class="bg-brand-card border-2 border-brand-border rounded-xl p-5 brutalist-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-space text-pink-400 font-bold flex items-center gap-1.5">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+                Official Post #3
+              </span>
+              <span class="text-[11px] text-zinc-500 font-space">CSR Stories</span>
+            </div>
+            <div class="h-44 bg-zinc-900 rounded-lg border border-brand-border flex flex-col items-center justify-center p-4 text-center mb-4 relative overflow-hidden group">
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-zinc-900/60 to-transparent z-10"></div>
+              <i data-lucide="heart-handshake" class="w-12 h-12 text-zinc-600 mb-2 relative z-20 group-hover:text-brand-coral transition-colors"></i>
+              <p class="text-xs font-space text-zinc-300 relative z-20">Grassroots Community Engagement</p>
+              <span class="text-[10px] text-zinc-500 relative z-20 mt-1">Field Photo Essay</span>
+            </div>
+            <p class="text-zinc-300 text-sm font-inter line-clamp-3 mb-4">
+              Impact post highlighting the on-ground tribal development initiatives and healthcare camps supported by OMC.
+            </p>
+          </div>
+          <a href="https://www.instagram.com/p/DZEaVlmTdtP/?stkn=NTY1NTFmdnBkeTIx" target="_blank" rel="noopener noreferrer" class="sticker-badge bg-brand-neon text-black text-xs font-space font-bold py-2 px-4 rounded-lg border-2 border-black flex items-center justify-center gap-2 hover:bg-white transition-all text-center">
+            View Live Post on Instagram
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- OMC NEWSLETTER EDITORIAL FEATURE BANNER -->
+      <div class="bg-brand-dark border-2 border-brand-border rounded-2xl p-6 md:p-8 brutalist-card flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div class="flex items-start gap-4">
+          <div class="w-14 h-14 rounded-xl bg-brand-coral/20 border border-brand-coral/40 flex items-center justify-center flex-shrink-0 text-brand-coral">
+            <i data-lucide="newspaper" class="w-7 h-7"></i>
+          </div>
+          <div>
+            <span class="text-xs font-space text-brand-coral font-bold uppercase tracking-wider block mb-1">
+              Editorial & Feature Writing
+            </span>
+            <h3 class="text-2xl font-syne font-bold text-white mb-2">
+              Official OMC Monthly Corporate Newsletter
+            </h3>
+            <p class="text-zinc-300 font-inter text-sm max-w-2xl leading-relaxed">
+              Researched, authored, and edited key sections for the official May edition of the OMC corporate newsletter—including articles on sustainable mining, tribal skill training, and green energy initiatives.
+            </p>
+          </div>
+        </div>
+        <div class="flex-shrink-0 w-full lg:w-auto">
+          <a href="https://dg1ya6cdc7ief.cloudfront.net/Upload/Publication_Documents/25b3cd5675cf46ff9349baf35632d78f_20260609121100934.pdf" target="_blank" rel="noopener noreferrer" class="sticker-badge bg-white text-black font-space font-bold text-sm px-6 py-3 rounded-full border-2 border-black inline-flex items-center justify-center gap-2 hover:bg-brand-neon w-full transition-all">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            Read Document PDF (Cloudfront)
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION: FLAGSHIP CAMPAIGNS (TATA STEEL, DHENKANAL FOREST, SYMPOSIUM) -->
+  <section id="campaigns" class="py-20 px-4 max-w-6xl mx-auto">
+    
+    <div class="mb-12">
+      <div class="inline-block sticker-badge bg-brand-orange text-black text-xs font-space font-bold px-3 py-1 rounded border-2 border-black uppercase mb-3">
+        Field Proven Experience
+      </div>
+      <h2 class="text-4xl md:text-6xl font-syne font-bold text-white tracking-tight uppercase">
+        Campaigns & Institutional PR
+      </h2>
+      <p class="text-zinc-400 font-space text-base mt-2">
+        High-scale initiatives across corporate CSR, environmental conservation, and public policy
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- CAMPAIGN 1: TATA STEEL -->
+      <div class="bg-brand-dark border-2 border-brand-border rounded-xl p-6 brutalist-card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="sticker-badge bg-blue-500/20 text-blue-400 text-xs font-space font-bold px-2.5 py-1 rounded border border-blue-500/40">
+              CSR & Sports
+            </span>
+            <span class="text-xs text-zinc-500 font-space">Oct 2025 – Jan 2026</span>
+          </div>
+          <h3 class="text-xl font-syne font-bold text-white mb-2">
+            Tata Steel Kapilash Half Marathon
+          </h3>
+          <p class="text-zinc-400 text-xs font-space mb-4">Kapilash, Dhenkanal, Odisha</p>
+          <ul class="text-zinc-300 text-sm font-inter space-y-2 mb-6">
+            <li class="flex items-start gap-2">
+              <span class="text-brand-neon">▸</span>
+              <span>Devised a 3-phase social media strategy driving <strong>5,300+ registrations</strong>.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-neon">▸</span>
+              <span>Produced promotional videos & creatives on marathon biodiversity and facilities.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-neon">▸</span>
+              <span>Awarded <strong>Certificate of Appreciation</strong> by Sarvesh Kumar (Chief Corporate Communications, Tata Steel).</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-brand-border/60">
+          <span class="text-xs font-space text-zinc-500 block">Output: 5.3K+ Registrations & Recognition</span>
+        </div>
+      </div>
+
+      <!-- CAMPAIGN 2: DHENKANAL FOREST DIVISION -->
+      <div class="bg-brand-dark border-2 border-brand-border rounded-xl p-6 brutalist-card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="sticker-badge bg-emerald-500/20 text-emerald-400 text-xs font-space font-bold px-2.5 py-1 rounded border border-emerald-500/40">
+              Wildlife & Conservation
+            </span>
+            <span class="text-xs text-zinc-500 font-space">Aug 2025 – Apr 2026</span>
+          </div>
+          <h3 class="text-xl font-syne font-bold text-white mb-2">
+            Dhenkanal Forest Division (DFO)
+          </h3>
+          <p class="text-zinc-400 text-xs font-space mb-4">Corporate Communicator & SPOC</p>
+          <ul class="text-zinc-300 text-sm font-inter space-y-2 mb-6">
+            <li class="flex items-start gap-2">
+              <span class="text-brand-neon">▸</span>
+              <span>SPOC of media team coordinating with DFO officers and IIMC faculty.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-neon">▸</span>
+              <span>Authored & designed educational <strong>Booklet for Kids (5–10 yrs)</strong> on forest ecology.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-neon">▸</span>
+              <span>Coordinated IIMC–DFO Photography Exhibition display boards and social releases.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-brand-border/60">
+          <span class="text-xs font-space text-zinc-500 block">Output: Bilingual Outreach & Kids Booklet</span>
+        </div>
+      </div>
+
+      <!-- CAMPAIGN 3: ODISHA LANDSCAPE SYMPOSIUM -->
+      <div class="bg-brand-dark border-2 border-brand-border rounded-xl p-6 brutalist-card flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="sticker-badge bg-purple-500/20 text-purple-400 text-xs font-space font-bold px-2.5 py-1 rounded border border-purple-500/40">
+              State Conference
+            </span>
+            <span class="text-xs text-zinc-500 font-space">Feb 2026 – Mar 2026</span>
+          </div>
+          <h3 class="text-xl font-syne font-bold text-white mb-2">
+            Odisha Landscape Symposium
+          </h3>
+          <p class="text-zinc-400 text-xs font-space mb-4">SNEHA NGO × Forest Dept × GMR</p>
+          <ul class="text-zinc-300 text-sm font-inter space-y-2 mb-6">
+            <li class="flex items-start gap-2">
+              <span class="text-brand-neon">▸</span>
+              <span>Executed 360° branding collateral: <strong>200+ brochures</strong> & <strong>1K+ goodies printed</strong>.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-neon">▸</span>
+              <span>Managed on-ground registration desk, delegate documentation & guest facilitation.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-brand-neon">▸</span>
+              <span>Streamlined multi-stakeholder correspondence between NGO partners and sponsors.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="pt-4 border-t border-brand-border/60">
+          <span class="text-xs font-space text-zinc-500 block">Output: End-to-End On-Ground Media</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SECTION: CREATIVE VAULT & FILTERABLE SHOWCASE (FROM CANVA PORTFOLIO) -->
+  <section id="creative" class="py-20 px-4 bg-brand-dark/30 border-t border-brand-border">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <div class="inline-block sticker-badge bg-brand-cyan text-black text-xs font-space font-bold px-3 py-1 rounded border-2 border-black uppercase mb-3">
+            Creative Portfolio Assets
+          </div>
+          <h2 class="text-4xl md:text-6xl font-syne font-bold text-white tracking-tight uppercase">
+            The Creative Vault
+          </h2>
+          <p class="text-zinc-400 font-space text-base mt-2">
+            Logos, social creatives, editorial articles, and strategic crisis management presentations
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterVault('all')" class="vault-filter-btn active sticker-badge bg-brand-neon text-black text-xs font-space font-bold px-3.5 py-1.5 rounded-full border border-black">
+            All Work
+          </button>
+          <button onclick="filterVault('social')" class="vault-filter-btn sticker-badge bg-brand-card text-zinc-300 text-xs font-space font-bold px-3.5 py-1.5 rounded-full border border-brand-border">
+            Social & Campaigns
+          </button>
+          <button onclick="filterVault('branding')" class="vault-filter-btn sticker-badge bg-brand-card text-zinc-300 text-xs font-space font-bold px-3.5 py-1.5 rounded-full border border-brand-border">
+            Logos & Identity
+          </button>
+          <button onclick="filterVault('editorial')" class="vault-filter-btn sticker-badge bg-brand-card text-zinc-300 text-xs font-space font-bold px-3.5 py-1.5 rounded-full border border-brand-border">
+            Editorial & Decks
+          </button>
+        </div>
+      </div>
+
+      <!-- Creative Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Asset 1: E-Bus Branding Logo -->
+        <div class="vault-item" data-category="branding">
+          <div class="bg-brand-card border border-brand-border rounded-xl p-5 brutalist-card h-full flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-space text-brand-cyan block mb-2 font-bold">Logo & Identity</span>
+              <h4 class="text-lg font-syne font-bold text-white mb-2">E-Bus Public Transit Branding Logo</h4>
+              <p class="text-zinc-400 text-xs font-inter leading-relaxed mb-4">
+                Designed a modern, eco-conscious identity mark for urban electric bus fleets, symbolizing clean energy and mobility.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-brand-border/60 flex items-center justify-between text-xs font-space text-zinc-500">
+              <span>Canva / Illustrator</span>
+              <span class="text-brand-neon">Identity Design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Asset 2: Dhenkanal Prasiddha Bara -->
+        <div class="vault-item" data-category="branding">
+          <div class="bg-brand-card border border-brand-border rounded-xl p-5 brutalist-card h-full flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-space text-brand-orange block mb-2 font-bold">Heritage Branding</span>
+              <h4 class="text-lg font-syne font-bold text-white mb-2">Dhenkanal Prasiddha Bara Logo</h4>
+              <p class="text-zinc-400 text-xs font-inter leading-relaxed mb-4">
+                Crafted the official cultural culinary identity for Dhenkanal's famous traditional delicacy, celebrating local food heritage.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-brand-border/60 flex items-center justify-between text-xs font-space text-zinc-500">
+              <span>Regional Brand</span>
+              <span class="text-brand-neon">Cultural Mark</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Asset 3: Piyush Pandey Tribute -->
+        <div class="vault-item" data-category="social">
+          <div class="bg-brand-card border border-brand-border rounded-xl p-5 brutalist-card h-full flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-space text-brand-coral block mb-2 font-bold">Creative Tribute</span>
+              <h4 class="text-lg font-syne font-bold text-white mb-2">Adman Piyush Pandey Tribute Poster</h4>
+              <p class="text-zinc-400 text-xs font-inter leading-relaxed mb-4">
+                Published across IIMC CCBM official Instagram and LinkedIn pages; acclaimed creative homage honoring Indian advertising pioneer Piyush Pandey.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-brand-border/60 flex items-center justify-between text-xs font-space text-zinc-500">
+              <span>IIMC CCBM Socials</span>
+              <span class="text-brand-neon">Ad Tribute</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Asset 4: Clean & Green Dhenkanal Drive -->
+        <div class="vault-item" data-category="social">
+          <div class="bg-brand-card border border-brand-border rounded-xl p-5 brutalist-card h-full flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-space text-emerald-400 block mb-2 font-bold">Civic Campaign</span>
+              <h4 class="text-lg font-syne font-bold text-white mb-2">Clean & Green Dhenkanal Municipality</h4>
+              <p class="text-zinc-400 text-xs font-inter leading-relaxed mb-4">
+                Public awareness visual collateral crafted for the municipal cleanliness drive to promote civic waste segregation and urban greenery.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-brand-border/60 flex items-center justify-between text-xs font-space text-zinc-500">
+              <span>Municipal PR</span>
+              <span class="text-brand-neon">Civic Drive</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Asset 5: Feature Article - Messaging over Branding -->
+        <div class="vault-item" data-category="editorial">
+          <div class="bg-brand-card border border-brand-border rounded-xl p-5 brutalist-card h-full flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-space text-purple-400 block mb-2 font-bold">Thought Leadership</span>
+              <h4 class="text-lg font-syne font-bold text-white mb-2">"Understand Messaging of Brand, Not Just Branding"</h4>
+              <p class="text-zinc-400 text-xs font-inter leading-relaxed mb-4">
+                Authored magazine feature article analyzing why narrative clarity and emotional resonance outlast superficial cosmetic branding.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-brand-border/60 flex items-center justify-between text-xs font-space text-zinc-500">
+              <span>Magazine Feature</span>
+              <span class="text-brand-neon">Article</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Asset 6: Crisis Management Plan PPT -->
+        <div class="vault-item" data-category="editorial">
+          <div class="bg-brand-card border border-brand-border rounded-xl p-5 brutalist-card h-full flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-space text-brand-neon block mb-2 font-bold">Strategy Deck</span>
+              <h4 class="text-lg font-syne font-bold text-white mb-2">Corporate Crisis Management Plan</h4>
+              <p class="text-zinc-400 text-xs font-inter leading-relaxed mb-4">
+                Comprehensive crisis communication roadmap detailing response protocols, media holding statements, and stakeholder reassurance frameworks.
+              </p>
+            </div>
+            <div class="pt-3 border-t border-brand-border/60 flex items-center justify-between text-xs font-space text-zinc-500">
+              <span>Strategy Presentation</span>
+              <span class="text-brand-neon">Crisis Plan</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION: EDUCATION & CERTIFICATIONS -->
+  <section class="py-20 px-4 max-w-6xl mx-auto border-t border-brand-border">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Education -->
+      <div class="bg-brand-dark p-6 md:p-8 rounded-2xl border-2 border-brand-border brutalist-card">
+        <h3 class="text-2xl font-syne font-bold text-white mb-6 uppercase flex items-center gap-2">
+          <i data-lucide="graduation-cap" class="w-6 h-6 text-brand-neon"></i>
+          Education
+        </h3>
+        
+        <div class="space-y-6">
+          <div class="border-l-2 border-brand-neon pl-4">
+            <span class="text-xs font-space text-brand-neon font-bold">2025 – 2026 · Score: 72.50%</span>
+            <h4 class="text-lg font-syne font-bold text-white mt-1">Indian Institute of Mass Communication (IIMC)</h4>
+            <p class="text-zinc-400 text-sm font-inter">Post Graduate Diploma in Corporate Communication & Brand Management</p>
+            <p class="text-xs font-space text-zinc-500 mt-1">Dhenkanal, Odisha</p>
+          </div>
+
+          <div class="border-l-2 border-brand-border pl-4">
+            <span class="text-xs font-space text-zinc-400 font-bold">2022 – 2025 · Score: 72.05%</span>
+            <h4 class="text-lg font-syne font-bold text-white mt-1">Mahatma Gandhi Antarrashtriya Hindi Vishwavidyalaya</h4>
+            <p class="text-zinc-400 text-sm font-inter">Bachelor of Mass Communication (BMC)</p>
+            <p class="text-xs font-space text-zinc-500 mt-1">Wardha, Maharashtra</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="bg-brand-dark p-6 md:p-8 rounded-2xl border-2 border-brand-border brutalist-card">
+        <h3 class="text-2xl font-syne font-bold text-white mb-6 uppercase flex items-center gap-2">
+          <i data-lucide="award" class="w-6 h-6 text-brand-coral"></i>
+          Certifications & Accreditations
+        </h3>
+
+        <div class="space-y-4">
+          <div class="p-4 bg-brand-card rounded-xl border border-brand-border flex items-start gap-3">
+            <i data-lucide="check" class="w-5 h-5 text-brand-coral flex-shrink-0 mt-0.5"></i>
+            <div>
+              <h5 class="text-sm font-syne font-bold text-white">Tata Steel Certificate of Appreciation</h5>
+              <p class="text-xs text-zinc-400 mt-1">Awarded by Sarvesh Kumar (Chief Corporate Communications, Tata Steel) for outstanding social media promotion.</p>
+            </div>
+          </div>
+
+          <div class="p-4 bg-brand-card rounded-xl border border-brand-border flex items-start gap-3">
+            <i data-lucide="check" class="w-5 h-5 text-brand-neon flex-shrink-0 mt-0.5"></i>
+            <div>
+              <h5 class="text-sm font-syne font-bold text-white">The ASCI Guide to Responsible Advertising</h5>
+              <p class="text-xs text-zinc-400 mt-1">ASCI Academy certification in ethical corporate communications and advertising standards.</p>
+            </div>
+          </div>
+
+          <div class="p-4 bg-brand-card rounded-xl border border-brand-border flex items-start gap-3">
+            <i data-lucide="check" class="w-5 h-5 text-brand-cyan flex-shrink-0 mt-0.5"></i>
+            <div>
+              <h5 class="text-sm font-syne font-bold text-white">AI for Digital Readiness & Marketing Research</h5>
+              <p class="text-xs text-zinc-400 mt-1">Certified workflows utilizing GenAI tools for creative copy, audience sentiment, and media planning.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION: CONTACT & CONNECT -->
+  <section id="contact" class="py-24 px-4 bg-brand-neon text-black">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-block sticker-badge bg-black text-white text-xs font-space font-bold px-4 py-1.5 rounded-full uppercase mb-4">
+        Ready for Collaborations & Roles
+      </div>
+      <h2 class="text-5xl md:text-7xl font-syne font-extrabold uppercase tracking-tight mb-6">
+        Let’s Build Impact Together
+      </h2>
+      <p class="text-lg md:text-xl font-space font-medium text-black/80 max-w-xl mx-auto mb-10">
+        Whether you’re seeking a Corporate Communicator, Brand Strategist, or Social Media Manager who delivers genuine organic traction—let’s talk.
+      </p>
+
+      <div class="flex flex-wrap justify-center items-center gap-4">
+        <a href="mailto:Sneha.ashi3003@gmail.com" class="sticker-badge bg-black text-white font-space font-bold text-sm px-6 py-3.5 rounded-full border-2 border-black flex items-center gap-2 hover:bg-white hover:text-black transition-all">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          Sneha.ashi3003@gmail.com
+        </a>
+        <a href="https://wa.me/916205066604?text=Hi%20Sneha,%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="sticker-badge bg-white text-black font-space font-bold text-sm px-6 py-3.5 rounded-full border-2 border-black flex items-center gap-2 hover:bg-brand-coral hover:text-white transition-all">
+          <i data-lucide="phone" class="w-4 h-4"></i>
+          +91 6205066604 (WhatsApp)
+        </a>
+        <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="sticker-badge bg-black text-white font-space font-bold text-sm px-6 py-3.5 rounded-full border-2 border-black flex items-center gap-2 hover:bg-blue-600 transition-all">
+          <i data-lucide="linkedin" class="w-4 h-4"></i>
+          LinkedIn Profile
+        </a>
+      </div>
+
+      <div class="mt-14 pt-8 border-t border-black/20 text-xs font-space text-black/70 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <span>© 2026 Sneha Raj · Nawada / Nagpur, India</span>
+        <span>Crafted with WTF-Inspired Brutalist Aesthetics & Overleaf Precision</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- POOKIE BOT (INTERACTIVE AI ASSISTANT WIDGET - SHREYAS PORTFOLIO STYLE)   -->
+  <!-- ========================================================================= -->
+  <div class="fixed bottom-6 right-6 z-50">
+    
+    <!-- Floating Trigger Button -->
+    <button id="pookie-trigger" onclick="togglePookie()" class="sticker-badge bg-brand-dark hover:bg-black text-white p-3.5 rounded-full border-2 border-brand-neon shadow-2xl flex items-center gap-3 transition-transform hover:scale-105 group">
+      <div class="relative">
+        <span class="text-2xl">🧸</span>
+        <span class="absolute -top-1 -right-1 w-3 h-3 bg-brand-neon rounded-full border-2 border-black animate-ping"></span>
+        <span class="absolute -top-1 -right-1 w-3 h-3 bg-brand-neon rounded-full border-2 border-black"></span>
+      </div>
+      <div class="text-left pr-2 hidden sm:block">
+        <span class="font-syne font-bold text-xs text-white block leading-tight">Pookie Bot</span>
+        <span class="font-space text-[10px] text-brand-neon block">Ask about Sneha ✨</span>
+      </div>
+    </button>
+
+    <!-- Chat Drawer Modal -->
+    <div id="pookie-chat" class="hidden absolute bottom-16 right-0 w-[92vw] sm:w-[380px] bg-brand-dark border-2 border-brand-border rounded-2xl shadow-2xl overflow-hidden flex flex-col brutalist-card z-50">
+      
+      <!-- Drawer Header -->
+      <div class="bg-brand-card p-4 border-b border-brand-border flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-brand-neon text-black font-syne font-bold flex items-center justify-center text-lg">
+            🧸
+          </div>
+          <div>
+            <h4 class="font-syne font-bold text-sm text-white">Pookie Bot</h4>
+            <span class="font-space text-[10px] text-brand-neon flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-neon"></span> Sneha's Media Assistant
+            </span>
+          </div>
+        </div>
+        <button onclick="togglePookie()" class="text-zinc-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Messages Body -->
+      <div id="pookie-messages" class="p-4 h-[320px] overflow-y-auto space-y-3 font-inter text-xs">
+        
+        <!-- Welcome Message -->
+        <div class="flex items-start gap-2.5">
+          <span class="text-lg">🧸</span>
+          <div class="bg-brand-card p-3 rounded-2xl rounded-tl-none border border-brand-border text-zinc-200">
+            <p>Hey there! I'm <strong>Pookie</strong>, Sneha's AI portfolio buddy 🌸. Pick a topic below or ask me anything about her campaigns!</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Action Chips -->
+      <div class="px-4 py-2 bg-brand-black/40 border-t border-brand-border/60 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap text-[11px] font-space text-zinc-300">
+        <button onclick="sendQuickPrompt('Tell me about her LinkedIn & Instagram growth at Eklavya')" class="px-2.5 py-1 bg-brand-card rounded-full border border-brand-border hover:border-brand-neon hover:text-white">
+          📈 Eklavya Growth
+        </button>
+        <button onclick="sendQuickPrompt('What work did she do at OMC?')" class="px-2.5 py-1 bg-brand-card rounded-full border border-brand-border hover:border-brand-neon hover:text-white">
+          ⛏️ OMC Posts
+        </button>
+        <button onclick="sendQuickPrompt('Tell me about the Tata Steel Marathon')" class="px-2.5 py-1 bg-brand-card rounded-full border border-brand-border hover:border-brand-neon hover:text-white">
+          🏃 Tata Steel
+        </button>
+        <button onclick="sendQuickPrompt('How can I contact or hire Sneha?')" class="px-2.5 py-1 bg-brand-card rounded-full border border-brand-border hover:border-brand-neon hover:text-white">
+          💼 Hire Sneha
+        </button>
+      </div>
+
+      <!-- Input Box -->
+      <form id="pookie-form" onsubmit="handlePookieSubmit(event)" class="p-3 bg-brand-card border-t border-brand-border flex items-center gap-2">
+        <input id="pookie-input" type="text" placeholder="Ask Pookie anything..." class="w-full bg-brand-black text-white px-3.5 py-2 rounded-xl border border-brand-border text-xs focus:outline-none focus:border-brand-neon">
+        <button type="submit" class="p-2 bg-brand-neon text-black rounded-xl hover:bg-white transition-colors">
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- CLIENT-SIDE LOGIC -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Custom Cursor follower
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, input').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+    });
+
+    // Platform Tab Switching (Eklavya section)
+    function switchPlatform(platform) {
+      document.querySelectorAll('.platform-tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.platform-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-neon', 'text-black');
+        btn.classList.add('bg-brand-card', 'text-zinc-300');
+      });
+
+      const activeContent = document.getElementById('platform-' + platform);
+      const activeBtn = document.getElementById('tab-btn-' + platform);
+      if (activeContent) activeContent.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-brand-card', 'text-zinc-300');
+        activeBtn.classList.add('bg-brand-neon', 'text-black');
+      }
+    }
+
+    // Creative Vault Filter
+    function filterVault(category) {
+      document.querySelectorAll('.vault-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-neon', 'text-black');
+        btn.classList.add('bg-brand-card', 'text-zinc-300');
+      });
+      event.target.classList.remove('bg-brand-card', 'text-zinc-300');
+      event.target.classList.add('bg-brand-neon', 'text-black');
+
+      document.querySelectorAll('.vault-item').forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Pookie Bot Toggle
+    function togglePookie() {
+      const chat = document.getElementById('pookie-chat');
+      chat.classList.toggle('hidden');
+      if (!chat.classList.contains('hidden')) {
+        document.getElementById('pookie-input').focus();
+      }
+    }
+
+    // Pookie AI Answers
+    function getPookieResponse(query) {
+      const q = query.toLowerCase();
+
+      if (q.includes('eklavya') || q.includes('growth') || q.includes('linkedin') || q.includes('instagram')) {
+        return "✨ At <strong>Eklavya India Foundation</strong>, Sneha drove spectacular organic growth:<br>• <strong>LinkedIn:</strong> +35.6% Follower Growth (527 new followers), +11.4% unique visitors (599), +2.1% page views (1,246), and 5,904 search appearances in 7 days!<br>• <strong>Instagram:</strong> +37% Views (10,468) & +38% Engagement (429) across student-story reels!";
+      }
+
+      if (q.includes('omc') || q.includes('odisha mining') || q.includes('newsletter') || q.includes('post')) {
+        return "⛏️ At <strong>Odisha Mining Corporation (OMC)</strong>:<br>• Published 3 key Instagram photo-stories on CSR tribal initiatives and Foundation Day media.<br>• Researched and compiled articles for the official May edition of OMC's monthly corporate newsletter (<a href='https://dg1ya6cdc7ief.cloudfront.net/Upload/Publication_Documents/25b3cd5675cf46ff9349baf35632d78f_20260609121100934.pdf' target='_blank' class='text-brand-neon underline'>Click here to view PDF</a>)!";
+      }
+
+      if (q.includes('tata') || q.includes('marathon')) {
+        return "🏃 For the <strong>Tata Steel Kapilash Half Marathon</strong>, Sneha formulated a 3-phase social media strategy that generated <strong>5,300+ registrations</strong>! She was honored with a Certificate of Appreciation by Sarvesh Kumar, Chief of Corporate Communications at Tata Steel!";
+      }
+
+      if (q.includes('forest') || q.includes('dhenkanal') || q.includes('dfo')) {
+        return "🌲 With <strong>Dhenkanal Forest Division</strong>, Sneha was the team SPOC. She coordinated awareness campaigns for wildlife conservation and designed a special illustrated <strong>Booklet for Kids aged 5–10</strong>!";
+      }
+
+      if (q.includes('contact') || q.includes('hire') || q.includes('email') || q.includes('phone') || q.includes('resume')) {
+        return "💌 You can reach Sneha directly via:<br>• <strong>Email:</strong> <a href='mailto:Sneha.ashi3003@gmail.com' class='text-brand-neon underline'>Sneha.ashi3003@gmail.com</a><br>• <strong>WhatsApp:</strong> <a href='https://wa.me/916205066604' target='_blank' class='text-brand-neon underline'>+91 6205066604</a><br>• Check the top right button to download her ATS Resume!";
+      }
+
+      return "I'm Pookie 🧸! Sneha is a Corporate Communicator with a PGD from IIMC Dhenkanal (72.5%) and experience at Eklavya Foundation, OMC, Tata Steel, and Dhenkanal Forest Dept. Feel free to ask about her campaigns or click one of the quick chips below!";
+    }
+
+    function appendPookieMessage(sender, htmlText) {
+      const container = document.getElementById('pookie-messages');
+      const msgDiv = document.createElement('div');
+      msgDiv.className = sender === 'user' ? 'flex items-start justify-end gap-2' : 'flex items-start gap-2.5';
+      
+      const avatar = sender === 'user' ? '👤' : '🧸';
+      const bubbleClass = sender === 'user' 
+        ? 'bg-brand-neon text-black font-medium p-3 rounded-2xl rounded-tr-none'
+        : 'bg-brand-card p-3 rounded-2xl rounded-tl-none border border-brand-border text-zinc-200';
+
+      msgDiv.innerHTML = sender === 'user' 
+        ? `<div class="${bubbleClass}">${htmlText}</div><span class="text-sm">${avatar}</span>`
+        : `<span class="text-lg">${avatar}</span><div class="${bubbleClass}">${htmlText}</div>`;
+
+      container.appendChild(msgDiv);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function handlePookieSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('pookie-input');
+      const val = input.value.trim();
+      if (!val) return;
+
+      appendPookieMessage('user', val);
+      input.value = '';
+
+      // Typing simulation
+      setTimeout(() => {
+        const reply = getPookieResponse(val);
+        appendPookieMessage('bot', reply);
+      }, 400);
+    }
+
+    function sendQuickPrompt(promptText) {
+      appendPookieMessage('user', promptText);
+      setTimeout(() => {
+        const reply = getPookieResponse(promptText);
+        appendPookieMessage('bot', reply);
+      }, 400);
+    }
+  </script>
+
+</body>
+</html>
