@@ -94,6 +94,28 @@
       background-size: 24px 24px;
     }
 
+    /* Top Candy Scroll Progress Bar */
+    #scroll-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4.5px;
+      width: 0%;
+      background: linear-gradient(90deg, #FF3366, #FFDE59, #2DD4BF, #A855F7, #06B6D4, #FF3366);
+      background-size: 200% 100%;
+      animation: candyGradientMove 3s linear infinite;
+      z-index: 100;
+      border-bottom: 1.5px solid #18181B;
+      box-shadow: 0 2px 10px rgba(255, 51, 102, 0.45);
+      transition: width 0.08s ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes candyGradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
     /* Pop Sticker Shadows */
     .pop-shadow {
       box-shadow: 4px 4px 0px 0px #18181B;
@@ -109,11 +131,29 @@
       border: 2.5px solid #18181B;
       box-shadow: 6px 6px 0px 0px #18181B;
       background-color: #FFFFFF;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .pop-card:hover {
-      transform: translateY(-4px);
       box-shadow: 9px 9px 0px 0px #18181B;
+    }
+
+    /* Dopamine Springy Scroll Reveal */
+    .scroll-reveal, .pop-card, .polaroid-frame {
+      opacity: 0;
+      transform: translateY(28px) scale(0.98);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+      will-change: opacity, transform;
+    }
+    .scroll-reveal.revealed, .pop-card.revealed, .polaroid-frame.revealed,
+    #hero .pop-card, #hero .polaroid-frame, #hero .scroll-reveal {
+      opacity: 1;
+      transform: translateY(0px) scale(1);
+    }
+
+    /* Interactive 3D Card Tilt with Perspective */
+    .tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
     }
 
     /* Custom Candy Cursor */
@@ -145,7 +185,7 @@
       background: #FFFFFF;
       border: 2.5px solid #18181B;
       box-shadow: 7px 7px 0px 0px #18181B;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
     }
     .polaroid-frame:hover {
@@ -173,22 +213,34 @@
     .walking-mode {
       animation: walkAcross 16s ease-in-out infinite !important;
     }
+
+    /* Pookie Ashi Scroll Mood Badge Pulse */
+    @keyframes moodPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+    .mood-pulse {
+      animation: moodPulse 1.8s ease-in-out infinite;
+    }
   </style>
 </head>
 <body class="selection:bg-dopamine-yellow selection:text-black overflow-x-hidden font-inter">
+
+  <!-- Top Dynamic Candy Scroll Progress Bar -->
+  <div id="scroll-progress-bar"></div>
 
   <!-- Custom Cursor -->
   <div id="cursor" class="custom-cursor"></div>
 
   <!-- FLOATING CANDY NAVBAR -->
   <header class="fixed top-4 left-0 right-0 z-40 flex justify-center px-4">
-    <nav class="bg-white/95 backdrop-blur-md border-2 border-zinc-900 rounded-full px-5 py-2.5 flex items-center gap-6 shadow-[5px_5px_0px_0px_#18181B]">
-      <a href="#hero" class="font-syne text-lg font-black tracking-tight text-zinc-900 flex items-center gap-2 group">
+    <nav class="bg-white/95 backdrop-blur-md border-2 border-zinc-900 rounded-full px-4 sm:px-5 py-2.5 flex items-center gap-3 sm:gap-6 shadow-[5px_5px_0px_0px_#18181B]">
+      <a href="#hero" class="font-syne text-base sm:text-lg font-black tracking-tight text-zinc-900 flex items-center gap-2 group flex-shrink-0">
         <span class="w-3 h-3 rounded-full bg-dopamine-mint border border-black animate-ping"></span>
         SNEHA RAJ
       </a>
       
-      <div class="hidden md:flex items-center gap-6 text-xs font-space font-bold uppercase tracking-wider text-zinc-700">
+      <div class="hidden md:flex items-center gap-5 text-xs font-space font-bold uppercase tracking-wider text-zinc-700">
         <a href="#eklavya" class="hover:text-dopamine-pink transition-colors">Eklavya Growth</a>
         <a href="#omc" class="hover:text-dopamine-pink transition-colors">OMC Work</a>
         <a href="#campaigns" class="hover:text-dopamine-pink transition-colors">Campaigns</a>
@@ -196,15 +248,27 @@
         <a href="#contact" class="hover:text-dopamine-pink transition-colors">Connect</a>
       </div>
 
-      <div class="flex items-center gap-2.5">
+      <!-- Dopamine Scroll Milestone Indicator -->
+      <div id="scroll-milestone-pill" class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50/90 border border-black text-[11px] font-space font-bold shadow-[1.5px_1.5px_0px_0px_#18181B] cursor-default" title="Scroll Progress">
+        <span id="milestone-icon">⚡</span>
+        <span id="milestone-text">0% • Explore</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <!-- Tactile Dopamine SFX Toggle Button -->
+        <button onclick="toggleSound()" id="nav-sound-btn" class="pop-shadow bg-purple-100 hover:bg-purple-200 text-purple-900 font-space font-bold text-xs uppercase px-2.5 sm:px-3 py-1.5 rounded-full flex items-center gap-1 transition-transform hover:scale-105" title="Toggle Tactile Sound FX">
+          <span id="nav-sound-icon">🔊</span>
+          <span class="hidden sm:inline">SFX</span>
+        </button>
+
         <!-- Direct tested LinkedIn Redirect Button -->
-        <a href="https://www.linkedin.com/in/sneha-raj3003/" target="_blank" rel="noopener noreferrer" class="pop-shadow bg-blue-600 hover:bg-blue-700 text-white font-space font-bold text-xs uppercase px-4 py-1.5 rounded-full flex items-center gap-1.5">
+        <a href="https://www.linkedin.com/in/sneha-raj3003/" target="_blank" rel="noopener noreferrer" class="pop-shadow bg-blue-600 hover:bg-blue-700 text-white font-space font-bold text-xs uppercase px-3.5 sm:px-4 py-1.5 rounded-full flex items-center gap-1.5">
           <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
-          LinkedIn ↗
+          <span class="hidden sm:inline">LinkedIn</span> ↗
         </a>
-        <a href="Sneha_Raj_Resume.pdf" target="_blank" download="Sneha_Raj_Resume.pdf" class="pop-shadow bg-dopamine-yellow text-black font-space font-bold text-xs uppercase px-3.5 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-yellow-300">
+        <a href="Sneha_Raj_Resume.pdf" target="_blank" download="Sneha_Raj_Resume.pdf" class="pop-shadow bg-dopamine-yellow text-black font-space font-bold text-xs uppercase px-3 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-yellow-300">
           <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-          Resume (PDF)
+          <span>Resume</span>
         </a>
       </div>
     </nav>
@@ -1303,8 +1367,14 @@
   <!-- ========================================================================= -->
   <div id="vanellope-widget" class="fixed bottom-0 right-4 sm:right-8 z-50 flex flex-col items-end pointer-events-none select-none">
     
+    <!-- Dynamic Scroll-Reactive Mood Pill -->
+    <div id="pookie-mood-pill" class="mb-1.5 pointer-events-auto bg-amber-100 text-zinc-900 border-2 border-black pop-shadow rounded-full px-3 py-1 text-[11px] font-space font-bold flex items-center gap-1.5 transition-all mood-pulse shadow-[2px_2px_0px_0px_#18181B]" title="Pookie Ashi's Live Scroll State">
+      <span id="pookie-mood-icon">🍭</span>
+      <span id="pookie-mood-text">Syncing with scroll...</span>
+    </div>
+
     <!-- Floating Speech Bubble above Pookie Ashi -->
-    <div id="vanellope-bubble" class="mb-1 pointer-events-auto bg-white pop-shadow rounded-2xl rounded-br-none px-4 py-2 max-w-[280px] text-xs font-space font-bold text-zinc-900 animate-float cursor-pointer" onclick="toggleVanellopeChat()">
+    <div id="vanellope-bubble" class="mb-1 pointer-events-auto bg-white pop-shadow rounded-2xl rounded-br-none px-4 py-2 max-w-[280px] text-xs font-space font-bold text-zinc-900 animate-float cursor-pointer transition-all duration-300" onclick="toggleVanellopeChat()">
       <span id="bubble-text">Hey! Click me to dance or chat with Pookie Ashi! 🍭</span>
     </div>
 
@@ -1547,35 +1617,170 @@
       el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
     });
 
-    // Web Audio API Synthesizer for Dopamine Sound FX
-    let soundEnabled = true;
+    // =========================================================================
+    // HIGH-PRECISION DOPAMINE WEB AUDIO ENGINE (TACTILE UI SOUNDS FOR MEDIA PORTFOLIO)
+    // =========================================================================
+    let soundEnabled = localStorage.getItem('sneha_portfolio_sfx') !== 'false'; // default ON
     let audioCtx = null;
-    function playCandyChime(freq = 600, type = 'sine', duration = 0.12) {
-      if (!soundEnabled) return;
+    let lastTickTime = 0;
+
+    function initAudioContext() {
       try {
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = type;
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(freq * 1.6, audioCtx.currentTime + duration);
-        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + duration);
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
       } catch (e) {}
     }
 
+    // Auto-resume audio on first user touch/click/scroll
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, initAudioContext, { once: true, passive: true });
+    });
+
+    // 1. Tactile Mechanical Scroll Tick (Haptic dial click feel - subtle & crisp)
+    function playTactileScrollTick(frequency = 960) {
+      if (!soundEnabled) return;
+      const now = performance.now();
+      if (now - lastTickTime < 60) return; // Throttled for pleasant cadence
+      lastTickTime = now;
+
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        const filter = audioCtx.createBiquadFilter();
+
+        osc.type = 'triangle';
+        const t = audioCtx.currentTime;
+        
+        // Pitch drop: simulate mechanical wheel tooth click
+        osc.frequency.setValueAtTime(frequency, t);
+        osc.frequency.exponentialRampToValueAtTime(frequency * 0.45, t + 0.016);
+
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(frequency * 0.85, t);
+        filter.Q.setValueAtTime(1.8, t);
+
+        // Soft, crisp volume envelope (gain 0.035: tactile, zero harshness)
+        gain.gain.setValueAtTime(0.035, t);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.016);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(t);
+        osc.stop(t + 0.018);
+      } catch (e) {}
+    }
+
+    // 2. Section Milestone Harmonizer (Warm pentatonic chime upon crossing sections)
+    const SECTION_CHORD_FREQS = {
+      hero: [523.25, 659.25],      // C5, E5
+      eklavya: [587.33, 739.99],   // D5, F#5
+      omc: [659.25, 830.61],       // E5, G#5
+      campaigns: [783.99, 987.77], // G5, B5
+      vault: [880.00, 1046.50],    // A5, C6
+      contact: [1046.50, 1318.51]  // C6, E6 (grand fanfare)
+    };
+
+    function playSectionChime(sectionId) {
+      if (!soundEnabled) return;
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+
+        const freqs = SECTION_CHORD_FREQS[sectionId] || [600, 900];
+        const t = audioCtx.currentTime;
+
+        freqs.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+
+          const noteStart = t + (idx * 0.035);
+          const duration = 0.22;
+
+          osc.frequency.setValueAtTime(freq, noteStart);
+          osc.frequency.exponentialRampToValueAtTime(freq * 1.05, noteStart + duration);
+
+          gain.gain.setValueAtTime(0.045, noteStart);
+          gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + duration);
+
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.start(noteStart);
+          osc.stop(noteStart + duration);
+        });
+      } catch (e) {}
+    }
+
+    // 3. Playful Candy Chime for interactive clicks & prompts
+    function playCandyChime(freq = 600, type = 'sine', duration = 0.12) {
+      if (!soundEnabled) return;
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        const t = audioCtx.currentTime;
+        osc.frequency.setValueAtTime(freq, t);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.5, t + duration);
+        gain.gain.setValueAtTime(0.08, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(t);
+        osc.stop(t + duration);
+      } catch (e) {}
+    }
+
+    // 4. Milestone Confetti Pop Sound
+    function playConfettiPop() {
+      if (!soundEnabled) return;
+      try {
+        initAudioContext();
+        if (!audioCtx) return;
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+        notes.forEach((f, i) => {
+          setTimeout(() => playCandyChime(f, 'sine', 0.14), i * 35);
+        });
+      } catch (e) {}
+    }
+
+    // Sync Sound Toggle Everywhere
     function toggleSound() {
       soundEnabled = !soundEnabled;
-      const icon = document.getElementById('sound-icon');
-      if (icon) icon.innerText = soundEnabled ? '🔊' : '🔈';
+      localStorage.setItem('sneha_portfolio_sfx', soundEnabled);
+      updateSoundUI();
       const b = document.getElementById('bubble-text');
-      if (b) b.innerText = soundEnabled ? "Sound FX Turned ON! 🎶🍬" : "Sound Muted! 🤫🍭";
-      if (soundEnabled) playCandyChime(700);
+      if (b) b.innerText = soundEnabled ? "Tactile Sound FX Turned ON! 🎶🍬" : "Sound Muted! 🤫🍭";
+      if (soundEnabled) playCandyChime(750, 'sine', 0.15);
+    }
+
+    function updateSoundUI() {
+      const icon = document.getElementById('sound-icon');
+      const navIcon = document.getElementById('nav-sound-icon');
+      const iconText = soundEnabled ? '🔊' : '🔈';
+      if (icon) icon.innerText = iconText;
+      if (navIcon) navIcon.innerText = iconText;
+      const navBtn = document.getElementById('nav-sound-btn');
+      if (navBtn) {
+        if (soundEnabled) {
+          navBtn.classList.remove('opacity-60', 'bg-zinc-100');
+          navBtn.classList.add('bg-purple-100');
+        } else {
+          navBtn.classList.add('opacity-60', 'bg-zinc-100');
+          navBtn.classList.remove('bg-purple-100');
+        }
+      }
     }
 
     // Lightbox Controls
@@ -2302,19 +2507,210 @@ Total Followers: 32,969`;
       renderer.setSize(width, height);
     }
 
+    // =========================================================================
+    // DYNAMIC SCROLL PHYSICS & REACTIVE POOKIE ASHI ENGINE
+    // =========================================================================
+    let rawScrollVelocity = 0;
+    let smoothScrollVelocity = 0;
+    let lastScrollY = window.scrollY;
+    let lastTickScrollY = window.scrollY;
+    let activeSectionId = 'hero';
+    const visitedSections = new Set();
+    let scrollQuipTimeout = null;
+
+    const SECTION_POOKIE_REACTIONS = {
+      hero: {
+        emoji: "🍭",
+        text: "Welcome to Sneha's creative world! 🍬 Scroll down to see real numbers!",
+        mood: "Welcoming & Hyped"
+      },
+      eklavya: {
+        emoji: "📈",
+        text: "Boom! +35.6% LinkedIn Growth at ₹0 media spend! Pure organic masterclass! 🔥",
+        mood: "Flexing Analytics"
+      },
+      omc: {
+        emoji: "⛏️",
+        text: "Odisha Mining Corporation! Real ground journalism at tribal mine sites! 📰",
+        mood: "Field Reporter Mode"
+      },
+      campaigns: {
+        emoji: "🏃",
+        text: "Tata Steel Marathon & Forest wildlife booklets! 5,300+ runner registrations! 🏆",
+        mood: "Celebrating Wins"
+      },
+      vault: {
+        emoji: "🎨",
+        text: "The Creative Vault is open! Adman tribute posters & public logos! 💎",
+        mood: "Artistic Energy"
+      },
+      contact: {
+        emoji: "💌",
+        text: "You reached the finale! 🏆 Ready to hire Sneha? Let's connect right now!",
+        mood: "Ready to Connect"
+      }
+    };
+
+    function handleGlobalScroll() {
+      const currentY = window.scrollY;
+      const deltaY = currentY - lastScrollY;
+      rawScrollVelocity = deltaY;
+      lastScrollY = currentY;
+
+      // 1. Tactile Mechanical Scroll Tick on every ~80px of scroll movement
+      if (Math.abs(currentY - lastTickScrollY) >= 80) {
+        playTactileScrollTick(deltaY > 0 ? 960 : 1100);
+        lastTickScrollY = currentY;
+      }
+
+      // 2. Top Candy Progress Bar Update
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = maxScroll > 0 ? Math.min(100, Math.max(0, (currentY / maxScroll) * 100)) : 0;
+      const bar = document.getElementById('scroll-progress-bar');
+      if (bar) bar.style.width = scrollPercent + '%';
+
+      // 3. Navbar Dopamine Milestone Badge Update
+      const milestoneIcon = document.getElementById('milestone-icon');
+      const milestoneText = document.getElementById('milestone-text');
+      if (milestoneText) {
+        let mEmoji = "⚡";
+        let mLabel = "0% • Explore";
+        if (scrollPercent >= 95) {
+          mEmoji = "🏆";
+          mLabel = "100% • Ready to Hire!";
+        } else if (scrollPercent >= 75) {
+          mEmoji = "🎨";
+          mLabel = `${Math.round(scrollPercent)}% • Creative Vault`;
+        } else if (scrollPercent >= 55) {
+          mEmoji = "🏃";
+          mLabel = `${Math.round(scrollPercent)}% • Campaigns`;
+        } else if (scrollPercent >= 35) {
+          mEmoji = "⛏️";
+          mLabel = `${Math.round(scrollPercent)}% • Ground CSR`;
+        } else if (scrollPercent >= 15) {
+          mEmoji = "📈";
+          mLabel = `${Math.round(scrollPercent)}% • Organic Stats`;
+        }
+        if (milestoneIcon) milestoneIcon.innerText = mEmoji;
+        milestoneText.innerText = mLabel;
+      }
+
+      // 4. Section Detection for Pookie Ashi Reactive Quips & Chimes
+      const sections = ['hero', 'eklavya', 'omc', 'campaigns', 'vault', 'contact'];
+      const midScreen = currentY + window.innerHeight * 0.42;
+
+      let detectedSection = 'hero';
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const secEl = document.getElementById(sections[i]);
+        if (secEl && secEl.offsetTop <= midScreen) {
+          detectedSection = sections[i];
+          break;
+        }
+      }
+
+      if (detectedSection !== activeSectionId) {
+        activeSectionId = detectedSection;
+        playSectionChime(detectedSection);
+
+        // Update Pookie Ashi Reactive Mood Pill & Speech Bubble
+        const reaction = SECTION_POOKIE_REACTIONS[detectedSection];
+        if (reaction) {
+          const moodIcon = document.getElementById('pookie-mood-icon');
+          const moodText = document.getElementById('pookie-mood-text');
+          const bubbleText = document.getElementById('bubble-text');
+          if (moodIcon) moodIcon.innerText = reaction.emoji;
+          if (moodText) moodText.innerText = reaction.mood;
+          if (bubbleText) bubbleText.innerText = reaction.text;
+        }
+
+        // Celebrate key milestones with confetti
+        if (!visitedSections.has(detectedSection)) {
+          visitedSections.add(detectedSection);
+          if (detectedSection === 'eklavya' || detectedSection === 'contact') {
+            confetti({
+              particleCount: detectedSection === 'contact' ? 90 : 50,
+              spread: 70,
+              origin: { y: 0.85, x: 0.88 },
+              colors: ['#FF3366', '#FFDE59', '#2DD4BF', '#06B6D4']
+            });
+            playConfettiPop();
+          }
+        }
+      }
+
+      // 5. Dynamic Quips on High-Speed Scroll
+      clearTimeout(scrollQuipTimeout);
+      if (Math.abs(rawScrollVelocity) > 35) {
+        const bubble = document.getElementById('bubble-text');
+        if (bubble) {
+          if (rawScrollVelocity < -40) {
+            bubble.innerText = "Wheee! Zooming back up! Looking for something specific? 👀🚀";
+          } else if (rawScrollVelocity > 40) {
+            bubble.innerText = "Turbo scroll! Sneha's portfolio moves fast! ⚡🏎️";
+          }
+        }
+      }
+
+      scrollQuipTimeout = setTimeout(() => {
+        const reaction = SECTION_POOKIE_REACTIONS[activeSectionId];
+        const bubble = document.getElementById('bubble-text');
+        if (reaction && bubble) {
+          bubble.innerText = reaction.text;
+        }
+      }, 1400);
+    }
+
+    window.addEventListener('scroll', handleGlobalScroll, { passive: true });
+
+    function initScrollAndTiltEffects() {
+      // 1. Intersection Observer for Smooth Springy Scroll Reveals
+      const revealTargets = document.querySelectorAll('.scroll-reveal, .pop-card, .polaroid-frame');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+      revealTargets.forEach(t => observer.observe(t));
+
+      // 2. Interactive 3D Card Tilt with Perspective
+      document.querySelectorAll('.pop-card, .polaroid-frame').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          const rotX = -(y / (rect.height / 2)) * 4.5;
+          const rotY = (x / (rect.width / 2)) * 4.5;
+          card.style.transform = `perspective(900px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-4px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      });
+    }
+
     function animateThree() {
       requestAnimationFrame(animateThree);
       const elapsed = clock.getElapsedTime();
 
-      // Orbit 3D Candies
+      // Smooth Scroll Physics Interpolation
+      smoothScrollVelocity = THREE.MathUtils.lerp(smoothScrollVelocity, rawScrollVelocity, 0.12);
+      rawScrollVelocity *= 0.88;
+
+      // Orbit 3D Candies with dynamic scroll acceleration & flare!
       if (candyGroup) {
+        const scrollSpeedBoost = Math.min(Math.abs(smoothScrollVelocity) * 0.0035, 0.12);
+        const scrollRadiusBoost = Math.min(Math.abs(smoothScrollVelocity) * 0.006, 0.45);
         candyGroup.children.forEach(c => {
-          c.userData.angle += 0.02 * c.userData.speed;
-          c.position.x = Math.cos(c.userData.angle) * c.userData.radius;
-          c.position.z = Math.sin(c.userData.angle) * (c.userData.radius * 0.6);
+          c.userData.angle += (0.02 + scrollSpeedBoost) * c.userData.speed;
+          const currentRadius = c.userData.radius + scrollRadiusBoost;
+          c.position.x = Math.cos(c.userData.angle) * currentRadius;
+          c.position.z = Math.sin(c.userData.angle) * (currentRadius * 0.6);
           c.position.y = c.userData.yOffset + Math.sin(elapsed * 2 + c.userData.angle) * 0.15;
-          c.rotation.x += 0.03;
-          c.rotation.y += 0.04;
+          c.rotation.x += 0.03 + scrollSpeedBoost * 0.5;
+          c.rotation.y += 0.04 + scrollSpeedBoost * 0.5;
         });
       }
 
@@ -2322,19 +2718,25 @@ Total Followers: 32,969`;
         if (danceType === 'groove') {
           // Bouncy Hip-Hop Groove Dance
           const bounce = Math.abs(Math.sin(elapsed * 5.5)) * 0.18;
-          characterGroup.position.y = bounce;
-          characterGroup.position.x = Math.sin(elapsed * 2.75) * 0.06;
-          characterGroup.rotation.z = Math.sin(elapsed * 2.75) * 0.07;
           
-          // Smooth 3D Cursor Parallax
-          characterGroup.rotation.y = THREE.MathUtils.lerp(characterGroup.rotation.y, mouse.x * 0.45, 0.08);
-          characterGroup.rotation.x = THREE.MathUtils.lerp(characterGroup.rotation.x, -mouse.y * 0.2, 0.08);
+          // Scroll Physics: Leaning, Pitch, and Levitation Float
+          const scrollTiltZ = Math.min(Math.max(smoothScrollVelocity * 0.0022, -0.25), 0.25);
+          const scrollPitchX = Math.min(Math.max(smoothScrollVelocity * 0.0018, -0.2), 0.2);
+          const scrollLevitation = smoothScrollVelocity < 0 ? Math.min(Math.abs(smoothScrollVelocity) * 0.0012, 0.28) : 0;
 
-          // Floor Shadow Dynamics
+          characterGroup.position.y = bounce + scrollLevitation;
+          characterGroup.position.x = Math.sin(elapsed * 2.75) * 0.06;
+          characterGroup.rotation.z = Math.sin(elapsed * 2.75) * 0.07 + scrollTiltZ;
+          
+          // Smooth 3D Cursor Parallax + Scroll Pitch
+          characterGroup.rotation.y = THREE.MathUtils.lerp(characterGroup.rotation.y, mouse.x * 0.45, 0.08);
+          characterGroup.rotation.x = THREE.MathUtils.lerp(characterGroup.rotation.x, -mouse.y * 0.2 + scrollPitchX, 0.08);
+
+          // Floor Shadow Dynamics reacting to levitation
           if (shadowMesh) {
-            const shadowScale = 1 - bounce * 0.35;
+            const shadowScale = Math.max(0.4, 1 - (bounce + scrollLevitation) * 0.45);
             shadowMesh.scale.set(shadowScale, shadowScale, 1);
-            shadowMesh.material.opacity = 0.28 - bounce * 0.08;
+            shadowMesh.material.opacity = Math.max(0.1, 0.28 - (bounce + scrollLevitation) * 0.12);
           }
         } else if (danceType === 'spin') {
           // 360 Pirouette Spin
@@ -2493,13 +2895,16 @@ Total Followers: 32,969`;
       }, 350);
     }
 
-    // Initialize 3D Engine and Eklavya Autonomous Monthly Growth Chart on DOM load
+    // Initialize 3D Engine, Audio state, Scroll Reveal & 3D Tilt, and Eklavya Autonomous Monthly Growth Chart
     window.addEventListener('DOMContentLoaded', () => {
+      updateSoundUI();
       initThreeVanellope();
       buildAutonomousTimeline();
       const latestMonth = EKLAVYA_MONTHS.length ? EKLAVYA_MONTHS[EKLAVYA_MONTHS.length - 1] : 'Oct 2026';
       updateEklavyaMonthlyDashboard(latestMonth);
       initEklavyaChart();
+      initScrollAndTiltEffects();
+      handleGlobalScroll();
     });
   </script>
 
